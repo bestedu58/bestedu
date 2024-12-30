@@ -20,6 +20,7 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "suspicious": { "noExplicitAny": "off", "noArrayIndexKey": "off" },
       "nursery": {
         "useSortedClasses": {
           "level": "warn",
