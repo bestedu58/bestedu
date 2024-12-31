@@ -1,14 +1,12 @@
-import ThemeProvider from "@/components/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
-import { Award, BookOpen, GraduationCap, Users } from "lucide-react";
+import { Award, BookOpen, Users } from "lucide-react";
 import Link from "next/link";
 
 function Page() {
   return (
     <div className="flex min-h-screen flex-col">
-      <ThemeProvider />
       <main className="flex-1">
-        <section className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-12 md:py-24 lg:py-32 xl:py-48">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="motion-preset-fade motion-delay-500 motion-translate-y-in-100 space-y-2">
@@ -21,7 +19,9 @@ function Page() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button variant="outline">Get Started</Button>
+                <Link href="/posts">
+                  <Button variant="outline">Get Started</Button>
+                </Link>
               </div>
             </div>
           </div>

@@ -2,86 +2,117 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils"; // Utility for conditional classes
-import { Menu } from "lucide-react"; // Icons
+import { cn } from "@/lib/utils";
+import { ChevronDown, Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeSwitcher from "./ThemeSwitcher";
+import * as React from "react";
+import { ThemeToggle } from "./ThemeSwitcher";
 
-export default function Navbar() {
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  {
+    name: "Posts",
+    href: "/posts",
+  },
+  {
+    name: "Notes",
+    href: "/Notes",
+  },
+];
+
+export function Header() {
   const pathname = usePathname();
 
-  const linkClasses = (href: string) =>
-    cn(
-      "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100",
-      pathname === href && "font-bold text-gray-900 dark:text-gray-100",
-    );
-
   return (
-    <nav className="border-gray-200 border-b bg-white dark:border-gray-700 dark:bg-gray-900">
-      <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Logo Section */}
-        <div className="font-bold text-gray-800 text-xl dark:text-gray-100">
-          <Link href="/">BESTEDU</Link>
-        </div>
+    <header className="sticky top-0 shadow-sm backdrop-blur">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <Link href="/" className="flex-shrink-0">
+              <span className="sr-only">Best Edu</span>
+              <Image src="/logo.png" width={100} height={90} alt="logo" />
+            </Link>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden space-x-4 md:flex">
-          <Link href="/" className={linkClasses("/")}>
-            Home
-          </Link>
-          <Link href="/about" className={linkClasses("/about")}>
-            About
-          </Link>
-          <Link href="/posts" className={linkClasses("/services")}>
-            posts
-          </Link>
-          <Link href="/notes" className={linkClasses("/services")}>
-            notes
-          </Link>
-          <Link href="/contact" className={linkClasses("/contact")}>
-            Contact
-          </Link>
-          <ThemeSwitcher />
-        </div>
+          {/* Desktop Navigation Menu */}
+          <div className="hidden lg:block">
+            <NavigationMenu>
+              <NavigationMenuList>
+                {navigation.map((item) => (
+                  <NavigationMenuItem key={item.name}>
+                    <Link href={item.href}>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                        active={pathname === item.href}
+                      >
+                        {item.name}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Toggle Menu">
-                <Menu size={20} />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="space-y-2 p-4">
-              <SheetHeader>
-                <SheetTitle>Navigation</SheetTitle>
-              </SheetHeader>
-              <Link href="/" className={linkClasses("/")}>
-                Home
-              </Link>
-              <Link href="/about" className={linkClasses("/about")}>
-                About
-              </Link>
-              <Link href="/posts" className={linkClasses("/services")}>
-                posts
-              </Link>
-              <Link href="/notes" className={linkClasses("/services")}>
-                notes
-              </Link>
-              <Link href="/contact" className={linkClasses("/contact")}>
-                Contact
-              </Link>
-            </SheetContent>
-          </Sheet>
+          <div className="hidden lg:flex lg:items-center lg:space-x-6">
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile Menu */}
+          <div className="lg:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Open main menu">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className=" shadow-md backdrop-blur">
+                <SheetHeader>
+                  <SheetTitle>Menu</SheetTitle>
+                </SheetHeader>
+                <nav className="mt-6">
+                  {navigation.map((item) => (
+                    <div key={item.name} className="py-2 ">
+                      <Link
+                        href={item.href}
+                        className={`block font-semibold text-lg ${
+                          pathname === item.href
+                            ? "text-indigo-600"
+                            : " hover:text-indigo-600"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </div>
+                  ))}
+                </nav>
+                <div className="mt-6 space-y-4">
+                  <p>Theme</p>
+                  <ThemeToggle />
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

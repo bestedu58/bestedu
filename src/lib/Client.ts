@@ -1,5 +1,5 @@
 const url = process.env.CONTENTFUL_GRAPHQL_URL;
-export async function Client(query: any, variables = {}) {
+export async function Client(query: any, variables = {}, revalidate?: number) {
   const token = process.env.CONTENTFUL_ACCESS_TOKEN;
 
   if (!url || !token) {
@@ -19,6 +19,7 @@ export async function Client(query: any, variables = {}) {
         query,
         variables,
       }),
+      next: revalidate ? { revalidate } : undefined, // Add revalidate to the options
     });
 
     if (!response.ok) {
