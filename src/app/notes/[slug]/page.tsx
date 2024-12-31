@@ -29,7 +29,7 @@ export default async function BlogPost({
     }
   }
 }`;
-  const { notesCollection } = await Client(query, { slug });
+  const { notesCollection } = await Client(query, { slug }, 60);
 
   const post = notesCollection.items[0];
 

@@ -28,7 +28,7 @@ const page = async () => {
 }`;
 
   try {
-    const data = await Client(query);
+    const data = await Client(query, {}, 60);
     const notes = data?.notesCollection?.items || [];
 
     if (notes.length === 0) {

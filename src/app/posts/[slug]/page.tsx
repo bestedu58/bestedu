@@ -26,7 +26,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     }
   }
 }`;
-  const { blogPostCollection } = await Client(MY_QUERY, { slug });
+  const { blogPostCollection } = await Client(MY_QUERY, { slug }, 60);
   console.log(blogPostCollection);
 
   const post = blogPostCollection.items[0];
