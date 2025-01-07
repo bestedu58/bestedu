@@ -17,7 +17,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
 import { ChevronDown, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,13 +41,13 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 shadow-sm backdrop-blur">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-10 shadow-sm backdrop-blur">
+      <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
               <span className="sr-only">Best Edu</span>
-              <Image src="/logo.png" width={100} height={90} alt="logo" />
+              <Image src="/logo.png" width={150} height={90} alt="logo" />
             </Link>
           </div>
 
@@ -58,14 +57,13 @@ export function Header() {
               <NavigationMenuList>
                 {navigation.map((item) => (
                   <NavigationMenuItem key={item.name}>
-                    <Link href={item.href}>
-                      <NavigationMenuLink
-                        className={navigationMenuTriggerStyle()}
-                        active={pathname === item.href}
-                      >
-                        {item.name}
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink
+                      href={item.href}
+                      className={navigationMenuTriggerStyle()}
+                      active={pathname === item.href}
+                    >
+                      {item.name}
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>

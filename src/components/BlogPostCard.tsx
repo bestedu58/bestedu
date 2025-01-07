@@ -34,7 +34,7 @@ export default function BlogPostCard({
           src={featuredImage.url}
           alt={title}
           fill
-          className="rounded-xl object-cover"
+          className=" rounded-xl object-cover"
         />
       </div>
       <CardHeader>

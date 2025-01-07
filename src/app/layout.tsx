@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playwrite_RO } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { ThemeProvider } from "next-themes";
@@ -13,7 +13,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
+const playwrite = Playwrite_RO({
+  variable: "--font-playwright",
+  weight: "100",
+});
 export const metadata: Metadata = {
   title: "Home",
   description: "Homepage of bestedu",
@@ -29,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playwrite.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
