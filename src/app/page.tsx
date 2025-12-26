@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Users } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 function Page() {
   return (

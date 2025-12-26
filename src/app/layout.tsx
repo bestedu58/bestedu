@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playwrite_RO } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
 import { ThemeProvider } from "next-themes";
+import { Header } from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,10 +18,11 @@ const playwrite = Playwrite_RO({
   weight: "100",
 });
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Homepage of bestedu",
-  keywords: "ho huh jgjh hvj  jhgj",
-  authors: { name: "jhgxjs", url: "sjdfgs" },
+  title: "BestEdu - Unlock Your Learning Potential",
+  description:
+    "Discover a world of knowledge with our cutting-edge online learning platform. Learn from the best, anytime, anywhere.",
+  keywords: "online learning, education, courses, tutorials, learning platform",
+  authors: { name: "BestEdu Team", url: "https://bestedu.com" },
 };
 
 export default function RootLayout({

@@ -1,3 +1,6 @@
+import { CalendarIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,9 +9,6 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { CalendarIcon, ClockIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 export interface BlogPostCardProps {
   title: string;
@@ -34,7 +34,7 @@ export default function BlogPostCard({
           src={featuredImage.url}
           alt={title}
           fill
-          className=" rounded-xl object-cover"
+          className="rounded-xl object-cover"
         />
       </div>
       <CardHeader>
@@ -65,7 +65,7 @@ export default function BlogPostCard({
     </Card>
   );
 }
-import React from "react";
+
 import { Skeleton } from "./ui/skeleton";
 
 export const BlogPostCardSklaton = () => {
@@ -82,7 +82,7 @@ export const BlogPostCardSklaton = () => {
           <Avatar>
             <Skeleton className="h-full w-full" />
           </Avatar>
-          <div className=" flex-grow">
+          <div className="flex-grow">
             <Skeleton className="my-1 h-4 w-full" />
             <div>
               <Skeleton className="h-4 w-full" />
