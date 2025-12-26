@@ -1,5 +1,4 @@
 import { BlogPostCardSklaton } from "@/components/BlogPostCard";
-import React from "react";
 
 function loading() {
   return (

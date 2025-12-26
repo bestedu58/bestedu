@@ -1,6 +1,5 @@
 import { CalendarIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";

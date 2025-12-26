@@ -1,7 +1,8 @@
-import { Client } from "@/lib/Client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Client } from "@/lib/Client";
+
 const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const MY_QUERY = `query my($slug: String!) {

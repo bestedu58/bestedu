@@ -1,13 +1,15 @@
 "use client";
 
+import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
@@ -17,11 +19,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ChevronDown, Menu } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import * as React from "react";
 import { ThemeToggle } from "./ThemeSwitcher";
 
 const navigation = [
@@ -82,19 +79,19 @@ export function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className=" shadow-md backdrop-blur">
+              <SheetContent side="right" className="shadow-md backdrop-blur">
                 <SheetHeader>
                   <SheetTitle>Menu</SheetTitle>
                 </SheetHeader>
                 <nav className="mt-6">
                   {navigation.map((item) => (
-                    <div key={item.name} className="py-2 ">
+                    <div key={item.name} className="py-2">
                       <Link
                         href={item.href}
                         className={`block font-semibold text-lg ${
                           pathname === item.href
                             ? "text-indigo-600"
-                            : " hover:text-indigo-600"
+                            : "hover:text-indigo-600"
                         }`}
                       >
                         {item.name}

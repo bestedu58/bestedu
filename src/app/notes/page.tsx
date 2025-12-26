@@ -1,7 +1,6 @@
-import NotesCard, { type NoteCardProps } from "@/components/NotesCard";
-import PdfViewer from "@/components/PdfViewer";
-import { Client } from "@/lib/Client";
 import type { Metadata } from "next";
+import NotesCard, { type NoteCardProps } from "@/components/NotesCard";
+import { Client } from "@/lib/Client";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -36,7 +35,7 @@ const page = async () => {
     }
 
     return (
-      <div className=" grid gap-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.notesCollection.items.map(
           (note: NoteCardProps, index: number) => (
             <NotesCard key={index} {...note} />

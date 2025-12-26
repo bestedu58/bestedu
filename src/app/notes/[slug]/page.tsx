@@ -1,12 +1,13 @@
-import Pdfviewer from "@/components/PdfViewer";
-import { Client } from "@/lib/Client";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Pdfviewer from "@/components/PdfViewer";
+import { Client } from "@/lib/Client";
 
 export default async function BlogPost({
   params,
-}: { params: Promise<{ slug: string }> }) {
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const query = `query ($slug: String!) {
   notesCollection(where: {slug: $slug}) {
